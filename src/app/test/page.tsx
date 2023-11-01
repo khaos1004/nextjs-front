@@ -1,5 +1,5 @@
 export default function FristPost() {
-    return <h1>First Posts</h1>
+    return <h1>First Poasts</h1>
   }
 
 // export default Keroro() ; {
