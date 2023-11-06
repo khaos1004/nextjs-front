@@ -1,11 +1,12 @@
+import Layout from "@/components/layouts/Layout"
+
 export default function FristPost() {
-    return <h1>First Poasts</h1>
+    return (
+      <Layout
+        contents={
+        <p>keroro</p>
+        }>
+      </Layout>
+    )
   }
 
-// export default Keroro() ; {
-//     return(
-//         <div>
-//         <h1>gee</h1>
-//         </div>
-//     )
-// }
