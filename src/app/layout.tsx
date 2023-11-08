@@ -5,12 +5,9 @@ import './globals.css'
 import Header from '@/components/public/header/Navbar';
 import Aside from '@/components/public/side/Sidebar';
 import Footer from '@/components/public/footer/Footer';
-import { createContext, useState } from 'react';
+
 
 const inter = Inter({ subsets: ['latin'] })
-
-//커스텀 
-const Menu = createContext('groupware');
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -21,37 +18,34 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-
-  // 커스텀
-  const [menu, setMenu] = useState('groupware'); // 기본 상태 값 설정
-
-  return (
-    <html lang="en">
-      <body className={inter.className}>
-        <div className="flex">
-          {/* 헤더 */}
-          <header className="h-auto">
-            <Header />
-          </header>
-
+  return (    
+      <html lang="en">
+        <body className={inter.className}>
           <div className="flex">
-            {/* 사이드바 */}
-            <aside className="left-0 bg-gray-200 w-64 h-[46.5rem] mt-[4rem] px-5 py-5 shadow">
-              <Aside />
-            </aside>
+            {/* 헤더 */}
+            <header className="h-[5rem] fixed top-0 w-full">
+              <Header />
+            </header>
 
-            {/* 메인 콘텐츠 */}
-            <main className="h-[45rem] mt-[4rem] px-5 py-5">
-              {children}
-            </main>
+            <div className="flex">
+              {/* 사이드바 */}
+              <aside className="left-0 bg-gray-200 w-64 h-[46.5rem] mt-[4rem] px-5 pt-[5rem] shadow">
+                <Aside />
+                {/* <AsideTest /> */}
+              </aside>
+
+              {/* 메인 콘텐츠 */}
+              <main className="h-[45rem] mt-[4rem] px-5 py-5">
+                {children}
+              </main>
+            </div>
+
+            {/* 푸터 */}
+            <footer className="h-auto bottom-0 left-0">
+              <Footer />
+            </footer>
           </div>
-
-          {/* 푸터 */}
-          <footer className="h-auto bottom-0 left-0">
-            <Footer />
-          </footer>
-        </div>
-      </body>
-    </html>
+        </body>
+      </html>    
   )
 }

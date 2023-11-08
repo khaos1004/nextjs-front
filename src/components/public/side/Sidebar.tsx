@@ -9,61 +9,44 @@ import DeliverablesIcon from '@/svg/DeliverablesIcon'
 import InvoicesIcon from '@/svg/InvoicesIcon'
 import InventoryIcon from '@/svg/InventoryIcon'
 import SettingIcon from '@/svg/SettingsIcon'
-import { MenuContext } from '@/contexts/MenuContext';
+import Link from 'next/link';
+import Tab from '@/app/dashboard/page';
 
 
+// 메뉴 아이템을 위한 타입 정의
+type items = {
+    id: string;
+    label: string;
+};
 
+function tabCreate(label : string){
+    return <Tab label={label} />;
+}
+
+const data: items[] = [
+    { id: 'dashboard', label: 'Dashboard' },
+    { id: 'product', label: 'Products' },
+    { id: 'performance', label: 'Performance' },
+    { id: 'deliverables', label: 'Deliverables' },
+    { id: 'invoices', label: 'Invoices' },
+    { id: 'inventory', label: 'Inventory' },
+    { id: 'setting', label: 'Settings' },
+];
 export default function Aside() {
     return (
         <>
             <div className="flex-col justify-between flex">
                 <div className="px-8">
                     <ul>
-                        <li className="flex w-full justify-between text-white-100 cursor-pointer items-center mb-6">
-                            <button className="flex items-center focus:outline-none focus:ring-2 focus:ring-white">
-                                <DashboardIcon />
-                                <span className="text-sm ml-2">Dashboard</span>
-                            </button>
-                            {/* <div  className="py-1 px-3 bg-gray-600 rounded text-white-300 flex items-center justify-center text-xs">5</div> */}
-                        </li>
-                        <li className="flex w-full justify-between text-white-400 hover:text-white-300 cursor-pointer items-center mb-6">
-                            <button className="flex items-center focus:outline-none focus:ring-2 focus:ring-white">
-                                <ProductIcon />
-                                <span className="text-sm ml-2">Products</span>
-                            </button>
-                            {/* <div  className="py-1 px-3 bg-gray-600 rounded text-white-300 flex items-center justify-center text-xs">8</div> */}
-                        </li>
-                        <li className="flex w-full justify-between text-white-400 hover:text-white-300 cursor-pointer items-center mb-6">
-                            <button className="flex items-center focus:outline-none focus:ring-2 focus:ring-white">
-                                <PerformanceIcon />
-                                <span className="text-sm ml-2">Performance</span>
-                            </button>
-                        </li>
-                        <li className="flex w-full justify-between text-white-400 hover:text-white-300 cursor-pointer items-center mb-6">
-                            <a href="javascript:void(0)" className="flex items-center focus:outline-none focus:ring-2 focus:ring-white" >
-                                <DeliverablesIcon />
-                                <span className="text-sm ml-2">Deliverables</span>
-                            </a>
-                        </li>
-                        <li className="flex w-full justify-between text-white-400 hover:text-white-300 cursor-pointer items-center mb-6">
-                            <button className="flex items-center focus:outline-none focus:ring-2 focus:ring-white">
-                                <InvoicesIcon />
-                                <span className="text-sm ml-2">Invoices</span>
-                            </button>
-                            {/* <div  className="py-1 px-3 bg-gray-600 rounded text-white-300 flex items-center justify-center text-xs">25</div> */}
-                        </li>
-                        <li className="flex w-full justify-between text-white-400 hover:text-white-300 cursor-pointer items-center mb-6">
-                            <a href="javascript:void(0)" className="flex items-center focus:outline-none focus:ring-2 focus:ring-white">
-                                <InventoryIcon />
-                                <span className="text-sm ml-2">Inventory</span>
-                            </a>
-                        </li>
-                        <li className="flex w-full justify-between text-white-400 hover:text-white-300 cursor-pointer items-center">
-                            <a href="javascript:void(0)" className="flex items-center focus:outline-none focus:ring-2 focus:ring-white">
-                                <SettingIcon />
-                                <span className="text-sm ml-2">Settings</span>
-                            </a>
-                        </li>
+                        {data.map((value) => (
+                            <li className="flex w-full justify-between text-white-100 cursor-pointer items-center mb-6">
+                                <button className="flex items-center focus:outline-none focus:ring-2 focus:ring-white">
+                                    <SettingIcon />
+                                        <div onClick={()=>tabCreate(value.label)} className="text-sm ml-2">{value.label}</div>
+                                </button>
+                                <button className="animate-pulse rounded-full py-1 px-2 bg-red-200 rounded text-white-300 flex items-center justify-center text-xs">5</button>
+                            </li>
+                        ))}
                     </ul>
                 </div>
                 <div className="my-12 border-t border-gray-800">

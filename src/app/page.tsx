@@ -1,7 +1,9 @@
-import Tab from'@/components/public/contents/Tab'
+import Tab from '@/components/public/contents/Tab'
 
 export default function Home() {
   return (
-    <Tab />
+    <>
+      <Tab />
+    </>
   )
 }
