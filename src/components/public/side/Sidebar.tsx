@@ -55,7 +55,7 @@ export default function Aside() {
                                         <button className="text-sm ml-2">{value.name}</button>
                                     </Link>
                                 </button>
-                                <button className="animate-pulse rounded-full py-1 px-2 bg-red-200 rounded text-white-300 flex items-center justify-center text-xs">5</button>
+                                <button className="animate-pulse rounded-full py-1 px-2 bg-red-400 rounded text-white-300 flex items-center justify-center text-xs">5</button>
                             </li>
                         ))}
                     </ul>

@@ -29,7 +29,7 @@ export default function RootLayout({
 
             <div className="flex">
               {/* 사이드바 */}
-              <aside className="left-0 bg-gray-200 w-64 h-[46.5rem] mt-[4rem] px-5 pt-[5rem] shadow">
+              <aside className="left-0 bg-gray-600 w-64 h-[100%] mt-[4rem] px-5 pt-[5rem] shadow">
                 <Aside />
                 {/* <AsideTest /> */}
               </aside>
