@@ -1,7 +1,5 @@
 "use client";
 
-import { useEffect, useState } from 'react'
-
 import DashboardIcon from '@/svg/DashboardIcon'
 import ProductIcon from '@/svg/ProductIcon'
 import PerformanceIcon from '@/svg/PerformanceIcon'
@@ -10,28 +8,39 @@ import InvoicesIcon from '@/svg/InvoicesIcon'
 import InventoryIcon from '@/svg/InventoryIcon'
 import SettingIcon from '@/svg/SettingsIcon'
 import Link from 'next/link';
-import Tab from '@/app/dashboard/page';
 
 
 // 메뉴 아이템을 위한 타입 정의
+type IconType = React.FC<React.SVGProps<SVGSVGElement>>;
+
 type items = {
-    id: string;
-    label: string;
+    Icon: IconType;
+    name: string;
+    url: string;
 };
 
-function tabCreate(label : string){
-    return <Tab label={label} />;
-}
 
 const data: items[] = [
-    { id: 'dashboard', label: 'Dashboard' },
-    { id: 'product', label: 'Products' },
-    { id: 'performance', label: 'Performance' },
-    { id: 'deliverables', label: 'Deliverables' },
-    { id: 'invoices', label: 'Invoices' },
-    { id: 'inventory', label: 'Inventory' },
-    { id: 'setting', label: 'Settings' },
+    { Icon: DashboardIcon, name: 'Dashboard', url: "/?tab=profile" },
+    { Icon: ProductIcon, name: 'Product', url: "/?tab=settings" },
+    { Icon: PerformanceIcon, name: 'Performance', url: "/" },
+    { Icon: DeliverablesIcon, name: 'Deliverables', url: "/" },
+    { Icon: InvoicesIcon, name: 'Invoices', url: "/" },
+    { Icon: InventoryIcon, name: 'Inventory', url: "/" },
+    { Icon: SettingIcon, name: 'Settings', url: "/" },
 ];
+
+// const data: items[] = [
+//     { id: 'DashboardIcon', label: 'Dashboard' },
+//     { id: 'product', label: 'Products' },
+//     { id: 'performance', label: 'Performance' },
+//     { id: 'deliverables', label: 'Deliverables' },
+//     { id: 'invoices', label: 'Invoices' },
+//     { id: 'inventory', label: 'Inventory' },
+//     { id: 'setting', label: 'Settings' },
+// ];
+
+
 export default function Aside() {
     return (
         <>
@@ -39,10 +48,12 @@ export default function Aside() {
                 <div className="px-8">
                     <ul>
                         {data.map((value, index) => (
-                            <li key={index}className="flex w-full justify-between text-white-100 cursor-pointer items-center mb-6">
+                            <li key={index} className="flex w-full justify-between text-white-100 cursor-pointer items-center mb-6">
                                 <button className="flex items-center focus:outline-none focus:ring-2 focus:ring-white">
-                                    <SettingIcon />
-                                        <div onClick={()=>tabCreate(value.label)} className="text-sm ml-2">{value.label}</div>
+                                    <value.Icon />
+                                    <Link href={value.url}>
+                                        <button className="text-sm ml-2">{value.name}</button>
+                                    </Link>
                                 </button>
                                 <button className="animate-pulse rounded-full py-1 px-2 bg-red-200 rounded text-white-300 flex items-center justify-center text-xs">5</button>
                             </li>

@@ -4,19 +4,22 @@ import TabHeader from '../../tabs/TabHeader';
 import TabContents from '../../tabs/TabContents';
 
 interface LayoutProps {
-    contents: ReactNode;
+    contents: string;
+    tabName: string;
 }
 
-const Layout: React.FC<LayoutProps> = ({ contents }) => {
+const TabLayout = ({ tabName, contents } : LayoutProps) => {
     return (
         <>
             <div className="mb-4 border-b border-gray-200 dark:border-gray-700">
-                <TabHeader label="tabs"/>
+                <TabHeader tabName={tabName} />                
             </div>
             <div id="default-tab-content">
-                <TabContents label="This is some placeholder content the Profile tab's associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classNamees to control the content visibility and styling." />
+                <TabContents content={contents} />        
             </div>
         </>
     );
 }
+
+export default TabLayout;
 

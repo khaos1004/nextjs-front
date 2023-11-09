@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/contexts/MenuContext.tsx", "src/components/public/side/Sidebar.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/contexts/MenuContext.tsx", "src/components/public/side/Sidebar.tsx", "src/components/public/horizon/components/navbar/index.jsx"],
   "exclude": ["node_modules"]
 }
