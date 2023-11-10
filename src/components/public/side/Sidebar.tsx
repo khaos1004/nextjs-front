@@ -7,7 +7,12 @@ import DeliverablesIcon from '@/svg/DeliverablesIcon'
 import InvoicesIcon from '@/svg/InvoicesIcon'
 import InventoryIcon from '@/svg/InventoryIcon'
 import SettingIcon from '@/svg/SettingsIcon'
-import Link from 'next/link';
+import BellIcon from '@/svg/bell'
+import { useState, useEffect, useContext, createContext } from "react";
+import Home from '@/app/page';
+import { useRouter } from 'next/navigation';
+import dataContext from '@/contexts/MenuContext' 
+
 
 
 // 메뉴 아이템을 위한 타입 정의
@@ -21,7 +26,7 @@ type items = {
 
 
 const data: items[] = [
-    { Icon: DashboardIcon, name: 'Dashboard', url: "/?tab=profile" },
+    { Icon: DashboardIcon, name: 'Dashboard', url: "/dashboard" },
     { Icon: ProductIcon, name: 'Product', url: "/?tab=settings" },
     { Icon: PerformanceIcon, name: 'Performance', url: "/" },
     { Icon: DeliverablesIcon, name: 'Deliverables', url: "/" },
@@ -41,7 +46,32 @@ const data: items[] = [
 // ];
 
 
+
+
 export default function Aside() {
+    const data1 = useContext(dataContext);
+    const MyContext = createContext(['Dashboard', '하야부시']);
+    // const TestContexte = useContext(SideDataContext);
+    
+    const router = useRouter();
+    const [activeTab, setActiveTab] = useState("Dashboard");
+
+    const handleButtonClick = (tabheader: string, tabContents: string) => {
+        setActiveTab(tabheader);
+        router.push('/');
+        <Home tabContents={tabContents} tabHeader={tabheader} />
+    };
+
+    // useEffect(() => {    
+    //     const tab = router.
+    //     if (router.isReady) {
+    //     //   const tab = router.query.tab;
+    //       if (typeof tab === 'string') {
+    //         setActiveTab(tab);
+    //       }
+    //     }
+    //   }, [router.isReady, router.query.tab]);
+
     return (
         <>
             <div className="flex-col justify-between flex">
@@ -51,11 +81,11 @@ export default function Aside() {
                             <li key={index} className="flex w-full justify-between text-white-100 cursor-pointer items-center mb-6">
                                 <button className="flex items-center focus:outline-none focus:ring-2 focus:ring-white">
                                     <value.Icon />
-                                    <Link href={value.url}>
-                                        <button className="text-sm ml-2">{value.name}</button>
-                                    </Link>
+                                    {/* <Link href> */}
+                                        <span onClick={() => handleButtonClick(value.name, value.url)} className={`text-sm ml-2 ${activeTab == value.name ? "font-bold" : "opacity-40"}`}>{value.name}</span>
+                                    {/* </Link> */}
                                 </button>
-                                <button className="animate-pulse rounded-full py-1 px-2 bg-red-400 rounded text-white-300 flex items-center justify-center text-xs">5</button>
+                                <button className="animate-pulse rounded-full py-1 px-2 bg-white text-white-400 flex items-center justify-center text-xs"><BellIcon />5</button>
                             </li>
                         ))}
                     </ul>
@@ -63,12 +93,8 @@ export default function Aside() {
                 <div className="my-12 border-t border-gray-800">
                     <ul className="flex items-center justify-evenly pr-2">
                         <li className="cursor-pointer text-white-800 pt-5 pb-3">
-                            <button aria-label="show notifications" className="focus:outline-none focus:ring-2 rounded focus:ring-white">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-bell" width="20" height="20" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z"></path>
-                                    <path d="M10 5a2 2 0 0 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6"></path>
-                                    <path d="M9 17v1a3 3 0 0 0 6 0v-1"></path>
-                                </svg>
+                            <button aria-label="open chats" className="focus:outline-none focus:ring-2 rounded focus:ring-white">
+                                <BellIcon />
                             </button>
                         </li>
                         <li className="cursor-pointer text-white-800 pt-5 pb-3">
