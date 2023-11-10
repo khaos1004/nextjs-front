@@ -94,7 +94,7 @@ export default function Aside() {
                     <ul className="flex items-center justify-evenly pr-2">
                         <li className="cursor-pointer text-white-800 pt-5 pb-3">
                             <button aria-label="open chats" className="focus:outline-none focus:ring-2 rounded focus:ring-white">
-                                <BellIcon />
+                                <BellIcon />{data1}
                             </button>
                         </li>
                         <li className="cursor-pointer text-white-800 pt-5 pb-3">
