@@ -55,7 +55,7 @@ const Home: React.FC<Datatype> = ({ tabHeader, tabContents }) => {
                 data-toggle="tab"                
                 role="tablist"
               >
-                <i className="fas fa-cog text-base mr-1"></i>  Settings
+                <i className="fas fa-cog text-base mr-1"></i>  Settingsa
               </button>
             </li>
             <li className="-mb-px mr-2 last:mr-0 flex text-center">
