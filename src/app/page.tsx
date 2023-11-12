@@ -73,7 +73,7 @@ const Home: React.FC<Datatype> = ({ tabHeader, tabContents }) => {
                 data-toggle="tab"                
                 role="tablist"
               >
-                <i className="fas fa-briefcase text-base mr-1"></i>  Options
+                <i className="fas fa-briefcase text-base mr-1"></i>  Optionss
               </button>
             </li>
           </ul>
