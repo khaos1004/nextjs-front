@@ -1,9 +1,17 @@
 import { createContext } from "react";
 
-// type dataType = {
-//     Dashboard: string;
-//   }
+interface MenuContextType {
+    tab: {
+      header: string;
+      contents: string;
+    };
+  }
 
-const MenuContext = createContext('value');
+const MenuContext = createContext<MenuContextType>({
+    tab:{
+    header: "skyblue",
+    contents: "keroro"
+    }
+});
 
 export default MenuContext;
