@@ -1,4 +1,4 @@
-const InventoryIcon = () => (
+const Inventory = () => (
     <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-stack" width="18" height="18" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" />
         <polyline points="12 4 4 8 12 12 20 8 12 4" />
@@ -7,5 +7,5 @@ const InventoryIcon = () => (
     </svg>
 );
 
-export default InventoryIcon;
+export default Inventory;
 

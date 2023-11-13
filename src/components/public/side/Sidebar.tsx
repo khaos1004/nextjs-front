@@ -1,90 +1,93 @@
 "use client";
 
-import DashboardIcon from '@/svg/DashboardIcon'
-import ProductIcon from '@/svg/ProductIcon'
-import PerformanceIcon from '@/svg/PerformanceIcon'
-import DeliverablesIcon from '@/svg/DeliverablesIcon'
-import InvoicesIcon from '@/svg/InvoicesIcon'
-import InventoryIcon from '@/svg/InventoryIcon'
-import SettingIcon from '@/svg/SettingsIcon'
-import BellIcon from '@/svg/bell'
+import Dashboard from '@/svg/Dashboard'
+import Product from '@/svg/Product'
+import Performance from '@/svg/Performance'
+import Deliverables from '@/svg/Deliverables'
+import Invoices from '@/svg/Invoices'
+import Inventory from '@/svg/Inventory'
+import Setting from '@/svg/Setting'
+import Bell from '@/svg/bell'
+import Message from '@/svg/message'
+import Log from '@/svg/Log'
 import { useState, useEffect, useContext, createContext } from "react";
-import Home from '@/app/page';
 import { useRouter } from 'next/navigation';
-import dataContext from '@/contexts/MenuContext' 
-
 
 
 // 메뉴 아이템을 위한 타입 정의
-type IconType = React.FC<React.SVGProps<SVGSVGElement>>;
+type svgType = React.FC<React.SVGProps<SVGSVGElement>>;
 
 type items = {
-    Icon: IconType;
+    svg: svgType;
     name: string;
     url: string;
+    index: string;
 };
 
+interface TabData {
+    tabHeader: string;
+    tabContents: string;
+    tabIndex: string;
+}
 
-const data: items[] = [
-    { Icon: DashboardIcon, name: 'Dashboard', url: "/dashboard" },
-    { Icon: ProductIcon, name: 'Product', url: "/?tab=settings" },
-    { Icon: PerformanceIcon, name: 'Performance', url: "/" },
-    { Icon: DeliverablesIcon, name: 'Deliverables', url: "/" },
-    { Icon: InvoicesIcon, name: 'Invoices', url: "/" },
-    { Icon: InventoryIcon, name: 'Inventory', url: "/" },
-    { Icon: SettingIcon, name: 'Settings', url: "/" },
+interface AsideProps {
+    setHeaderData: string;
+    // setTabData: React.Dispatch<React.SetStateAction<TabData>>;
+    setTabData: (newTab: TabData) => void;
+}
+
+const groupWare: items[] = [
+    { svg: Dashboard, name: 'Dashboard', url: "/dashboard", index: "1" },
+    { svg: Product, name: 'Product', url: "/?tab=settings", index: "2" },
+    { svg: Performance, name: 'Performance', url: "/", index: "3" },
+    { svg: Deliverables, name: 'Deliverables', url: "/", index: "4" },
+    { svg: Invoices, name: 'Invoices', url: "/", index: "5" },
+    { svg: Inventory, name: 'Inventory', url: "/", index: "6" },
+    { svg: Setting, name: 'Settings', url: "/", index: "7" },
 ];
 
-// const data: items[] = [
-//     { id: 'DashboardIcon', label: 'Dashboard' },
-//     { id: 'product', label: 'Products' },
-//     { id: 'performance', label: 'Performance' },
-//     { id: 'deliverables', label: 'Deliverables' },
-//     { id: 'invoices', label: 'Invoices' },
-//     { id: 'inventory', label: 'Inventory' },
-//     { id: 'setting', label: 'Settings' },
-// ];
+const erp: items[] = [
+    { svg: Dashboard, name: 'erp board', url: "/dashboard", index: "8" },
+    { svg: Product, name: 'erp Product', url: "/?tab=settings", index: "9" },
+    { svg: Performance, name: 'erp Performance', url: "/", index: "10" },
+    { svg: Deliverables, name: 'epr Deliverables', url: "/", index: "11" },
+    { svg: Invoices, name: 'erp Invoices', url: "/", index: "12" },
+    { svg: Inventory, name: 'erp Inventory', url: "/", index: "13" },
+    { svg: Setting, name: 'erp Settings', url: "/", index: "14" },
+];
 
 
 
 
-export default function Aside() {
-    // const data1 = useContext(dataContext);
-    // const TestContexte = useContext(SideDataContext);
+export default function Aside( { setHeaderData, setTabData }: AsideProps ) {
     
     const router = useRouter();
     const [activeTab, setActiveTab] = useState("Dashboard");
 
-    const handleButtonClick = (tabheader: string, tabContents: string) => {
+    const handleButtonClick = (tabheader: string, tabContents: string, tabIndex: string) => {
         setActiveTab(tabheader);
-        router.push('/');
-        <Home tabContents={tabContents} tabHeader={tabheader} />
+        setTabData({ tabHeader: tabheader, tabContents: tabContents, tabIndex: tabIndex });
+        // router.push('/');       
+
     };
 
-    // useEffect(() => {    
-    //     const tab = router.
-    //     if (router.isReady) {
-    //     //   const tab = router.query.tab;
-    //       if (typeof tab === 'string') {
-    //         setActiveTab(tab);
-    //       }
-    //     }
-    //   }, [router.isReady, router.query.tab]);
+     // headerData 값에 따라 사용할 배열을 결정
+     const menuItems = setHeaderData === "erp" ? erp : groupWare;
 
     return (
         <>
             <div className="flex-col justify-between flex">
                 <div className="px-8">
                     <ul>
-                        {data.map((value, index) => (
+                        {menuItems.map((value, index) => (
                             <li key={index} className="flex w-full justify-between text-white-100 cursor-pointer items-center mb-6">
                                 <button className="flex items-center focus:outline-none focus:ring-2 focus:ring-white">
-                                    <value.Icon />
+                                    <value.svg />
                                     {/* <Link href> */}
-                                        <span onClick={() => handleButtonClick(value.name, value.url)} className={`text-sm ml-2 ${activeTab == value.name ? "font-bold" : "opacity-40"}`}>{value.name}</span>
+                                        <span onClick={() => handleButtonClick(value.name, value.url, value.index)} className={`text-sm ml-2 ${activeTab == value.name ? "font-bold" : "opacity-40"}`}>{value.name}</span>
                                     {/* </Link> */}
                                 </button>
-                                <button className="animate-pulse rounded-full py-1 px-2 bg-white text-white-400 flex items-center justify-center text-xs"><BellIcon />5</button>
+                                <button className="animate-pulse rounded-full py-1 px-2 bg-white text-white-400 flex items-center justify-center text-xs"><Bell />5</button>
                             </li>
                         ))}
                     </ul>
@@ -93,35 +96,22 @@ export default function Aside() {
                     <ul className="flex items-center justify-evenly pr-2">
                         <li className="cursor-pointer text-white-800 pt-5 pb-3">
                             <button aria-label="open chats" className="focus:outline-none focus:ring-2 rounded focus:ring-white">
-                                <BellIcon />{}
+                                <Bell />
                             </button>
                         </li>
                         <li className="cursor-pointer text-white-800 pt-5 pb-3">
                             <button aria-label="open chats" className="focus:outline-none focus:ring-2 rounded focus:ring-white">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-messages" width="20" height="20" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z"></path>
-                                    <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10"></path>
-                                    <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2"></path>
-                                </svg>
+                               <Message />
                             </button>
                         </li>
                         <li className="cursor-pointer text-white-800 pt-5 pb-3">
                             <button aria-label="open settings" className="focus:outline-none focus:ring-2 rounded focus:ring-white">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-settings" width="20" height="20" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z"></path>
-                                    <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-                                    <circle cx="12" cy="12" r="3"></circle>
-                                </svg>
+                                <Setting />
                             </button>
                         </li>
                         <li className="cursor-pointer text-white-800 pt-5 pb-3">
                             <button aria-label="open logs" className="focus:outline-none focus:ring-2 rounded focus:ring-white">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-archive" width="20" height="20" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z"></path>
-                                    <rect x="3" y="4" width="18" height="4" rx="2"></rect>
-                                    <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10"></path>
-                                    <line x1="10" y1="12" x2="14" y2="12"></line>
-                                </svg>
+                                <Log />
                             </button>
                         </li>
                     </ul>
