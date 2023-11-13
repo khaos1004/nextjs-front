@@ -46,7 +46,7 @@ export default function RootLayout() {
                 </aside>
 
                 {/* 메인 콘텐츠 */}                
-                <main className="min-h-[45rem] mt-[4rem] px-5 py-5 flex-grow">
+                <main className="min-h-[45rem] mt-[3rem] px-5 py-5 flex-grow">
                     <div className="flex flex-wrap">
                         <div className="w-full">
                             <ul className="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row" role="tablist">
