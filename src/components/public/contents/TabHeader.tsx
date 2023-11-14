@@ -31,10 +31,10 @@ const TabHeaderComponent = ({ tabHeader, tabIndex, activeTab, setActiveTab, remo
 
     return (
         <>
-            <li className="-mb-px mr-2 last:mr-0 flex text-center">
+            <li className="-mb-px mr-2 last:mr-0 flex text-center w-[20rem]]">
                 <button
                     className={
-                        "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
+                        "text-xs font-bold bolder-solid uppercase px-4 mt-2 shadow rounded block items-center justify-center w-[10rem] flex-3" +
                         (activeTab === Number(tabIndex)
                             ? "text-white  bg-gray-600"
                             : "text-blueGray-600 bg-white")
@@ -46,8 +46,8 @@ const TabHeaderComponent = ({ tabHeader, tabIndex, activeTab, setActiveTab, remo
                     role="tablist"
                 >
                     <i className="fas fa-space-shuttle text-base mr-1"></i> {tabHeader}
-                    <button onClick={handleRemoveTab} className="close-tab text-xs pl-[0.75rem] text-red-600 hover:animate-pulse">
-                        X
+                    <button onClick={handleRemoveTab} className="close-tab text-xs pl-[0.25rem] text-red-600 hover:animate-pulse fixed">
+                        x
                     </button>
                 </button>
             </li>

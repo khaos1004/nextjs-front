@@ -41,7 +41,7 @@ export default function RootLayout() {
 
             <div className="flex">
                 {/* 사이드바 */}
-                <aside className="left-0 bg-gray-400 w-64 h-[100%] pr-2 mt-[3rem] px-5 pt-[6rem] shadow">                    
+                <aside className="left-0 bg-gray-400 w-[16rem] h-[100%] mt-[2rem] px-2 pt-[4rem] shadow">                    
                     <Aside setTabData={addTab} setHeaderData={headerData} />
                 </aside>
 
@@ -49,7 +49,7 @@ export default function RootLayout() {
                 <main className="min-h-[45rem] mt-[3rem] px-5 py-5 flex-grow">
                     <div className="flex flex-wrap">
                         <div className="w-full">
-                            <ul className="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row" role="tablist">
+                            <ul className="flex mb-0 list-none flex-wrap pt-2 pb-4 flex-row" role="tablist">                                           
                                 {tabs.map((tab, index) => (
                                     <TabHeaderComponent key={index} tabHeader={tab.tabHeader} tabIndex={tab.tabIndex} activeTab={activeTab}
                                         setActiveTab={setActiveTab} removeTab={removeTab} />
