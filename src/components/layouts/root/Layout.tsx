@@ -4,8 +4,7 @@ import { createContext, useContext, useState } from 'react';
 import Header from '@/components/public/header/Navbar';
 import Aside from '@/components/public/side/Sidebar';
 import Footer from '@/components/public/footer/Footer';
-import TabContentsComponent from '@/components/public/contents/TabContents';
-import TabHeaderComponent from '@/components/public/contents/TabHeader';
+import TabLayoutComponent from '../tab/TabLayout';
 
 
 interface TabData {
@@ -49,17 +48,7 @@ export default function RootLayout() {
                 <main className="min-h-[45rem] mt-[3rem] px-5 py-5 flex-grow">
                     <div className="flex flex-wrap">
                         <div className="w-full">
-                            <ul className="flex mb-0 list-none flex-wrap pt-2 pb-4 flex-row" role="tablist">                                           
-                                {tabs.map((tab, index) => (
-                                    <TabHeaderComponent key={index} tabHeader={tab.tabHeader} tabIndex={tab.tabIndex} activeTab={activeTab}
-                                        setActiveTab={setActiveTab} removeTab={removeTab} />
-                                ))}
-                            </ul>
-                            <div className="flex flex-col min-w-0 break-words bg-white w-[100%] mb-6 shadow-lg">
-                                {tabs.map((tab, index) => (
-                                    <TabContentsComponent key={index} tabContents={tab.tabContents} tabIndex={tab.tabIndex} activeTab={activeTab} />
-                                ))}
-                            </div>
+                        <TabLayoutComponent tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} removeTab={removeTab} />                        
                         </div>
                     </div>
                 </main>

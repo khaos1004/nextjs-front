@@ -44,14 +44,13 @@ function Navbar({ setHeaderData }: HeaderProps) {
         // 상태 업데이트        
         setCurrentMenu(menuItems);
         setcolorChange(menuType);
-        if(colorChange == "groupware"){
-            setHeaderData("erp")
-        }
-        else
-            setHeaderData("groupware")
 
-        // 커스텀 이벤트 발생
-        setcolorChange(menuType);
+        // 여기서 menuType을 사용
+        if (menuType === "groupware") {
+            setHeaderData("groupware");
+        } else if (menuType === "erp") {
+            setHeaderData("erp");
+        }
     };
 
     return (
