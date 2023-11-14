@@ -40,7 +40,7 @@ export default function RootLayout() {
 
             <div className="flex">
                 {/* 사이드바 */}
-                <aside className="left-0 bg-gray-400 w-[16rem] h-[100%] mt-[2rem] px-2 pt-[4rem] shadow">                    
+                <aside className="left-0 bg-gray-200 w-[16rem] mt-[4rem] px-2 pt-[4rem] shadow">                    
                     <Aside setTabData={addTab} setHeaderData={headerData} />
                 </aside>
 

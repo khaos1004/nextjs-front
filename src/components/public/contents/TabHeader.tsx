@@ -1,5 +1,6 @@
 'use client';
 import React, { useState } from 'react';
+import Dashboard from '@/svg/Dashboard';
 
 interface ContentsProps {
     tabHeader: string;
@@ -34,18 +35,17 @@ const TabHeaderComponent = ({ tabHeader, tabIndex, activeTab, setActiveTab, remo
             <li className="-mb-px mr-2 last:mr-0 flex text-center w-[20rem]]">
                 <button
                     className={
-                        "text-xs font-bold bolder-solid uppercase px-4 mt-2 shadow rounded block items-center justify-center w-[10rem] flex-3" +
+                        "text-xs font-bold bolder-solid uppercase px-4 mt-2 shadow rounded block items-center justify-center w-[10rem] flex-1" +
                         (activeTab === Number(tabIndex)
                             ? "text-white bg-white"
-                            : "text-blueGray-600 bg-gray-400")
+                            : "text-blueGray-600 bg-gray-200")
                     }
                     onClick={e => {
                         changeIndex(tabIndex)
                     }}
                     data-toggle="tab"
-                    role="tablist"
-                >
-                    <i className="fas fa-space-shuttle text-base mr-1"></i> {tabHeader}
+                    role="tablist">                    
+                    <i className="fas fa-space-shuttle text-base mr-1"></i>{tabHeader}
                     <button onClick={handleRemoveTab} className="close-tab text-xs pl-[0.25rem] text-red-600 hover:animate-pulse fixed">
                         x
                     </button>
