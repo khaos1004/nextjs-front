@@ -62,13 +62,13 @@ function Navbar({ setHeaderData }: HeaderProps) {
                             <button onClick={() => handleButtonClick(groupware, "groupware")} className={`text-white mr-4 text-center text-lg font-bold w-auto transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-10 "}`}>Home</button>
                         </Link>
                         <button onClick={() => handleButtonClick(groupware, "groupware")} className={`text-white text-center text-lg font-bold w-auto transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-10 ${colorChange == "groupware" ? "font-bold" : "opacity-25"}`}>GroupWare</button>
-                        <p className="text-white text-center text-lg font-bold w-auto px-2 w-auto">|</p>
+                        <p className="text-white text-center text-lg font-bold w-auto px-2">|</p>
                         <button onClick={() => handleButtonClick(erp, "erp")} className={`text-white text-center text-lg w-auto transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-10 ${colorChange == "erp" ? "font-bold" : "opacity-25"}`}>ERP</button>
                     </div>
                     <div className="flex w-[70%] space-x-12 justify-around ">
-                        {currentMenu.map((item) => (
-                            <Link href={item.url}>
-                                <button key={item.id} className="text-white w-auto hover:cursor-pointer hover:animate-pulse">{item.label}</button>
+                        {currentMenu.map((item, index) => (
+                            <Link key={index} href={item.url}>
+                                <button key={index} className="text-white w-auto hover:cursor-pointer hover:animate-pulse">{item.label}</button>
                             </Link>
                         ))}
                     </div>

@@ -1,5 +1,6 @@
 'use client';
 import React, { useState } from 'react';
+import PurchaseLayout from '@/components/layouts/purchase/PurchaseLayout';
 
 interface ContentsProps {
     tabContents: string;
@@ -19,7 +20,7 @@ const TabContentsComponent = ({ tabContents, tabIndex, activeTab }: ContentsProp
             <div className="px-4 py-5 flex-auto">
                 <div className="tab-content tab-space">
                     <div className="block" id={`link${tabIndex}`}>
-                        {tabContents}
+                        <PurchaseLayout />
                     </div>
                 </div>
             </div>

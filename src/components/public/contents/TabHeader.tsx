@@ -33,7 +33,7 @@ const TabHeaderComponent = ({ tabHeader, tabIndex, activeTab, setActiveTab, remo
     return (
         <>
             <li className="-mb-px mr-2 last:mr-0 flex text-center w-[20rem]]">
-                <button
+                <div
                     className={
                         "text-xs font-bold bolder-solid uppercase px-4 mt-2 shadow rounded block items-center justify-center w-[10rem] flex-1" +
                         (activeTab === Number(tabIndex)
@@ -49,7 +49,7 @@ const TabHeaderComponent = ({ tabHeader, tabIndex, activeTab, setActiveTab, remo
                     <button onClick={handleRemoveTab} className="close-tab text-xs pl-[0.25rem] text-red-600 hover:animate-pulse fixed">
                         x
                     </button>
-                </button>
+                </div>
             </li>
         </>
     );

@@ -18,6 +18,7 @@ export default function RootLayout() {
     const [headerData, setHeaderData] = useState<string>('groupWare'); // 메뉴를 위한 상태    
     const [activeTab, setActiveTab] = useState<number>(0);
     const [tabs, setTabs] = useState<TabData[]>([]);
+    
     const addTab = (newTab: TabData) => {        
         // 동일한 tabIndex를 가진 탭이 이미 있는지 검사
         const isTabAlreadyOpen = tabs.some(tab => tab.tabIndex === newTab.tabIndex);
