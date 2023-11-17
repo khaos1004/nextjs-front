@@ -2,6 +2,7 @@
 
 import Head from 'next/head';
 import { useState } from 'react';
+import Calendar from '@/svg/Calendar'
 
 interface TableData {
   id: number;
@@ -31,7 +32,7 @@ const IndexPage = () => {
           </div>
 
           <div className="items-center col-start-7 col-span-2">
-            <label className="mr-2">&gt;요청번호:</label>
+            <label className="mr-2">요청번호</label>
             <input type="date" name="date" className="border-solid border-2 border-gray-600" />
           </div>
 
