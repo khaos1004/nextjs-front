@@ -1,7 +1,7 @@
 export default function Footer() {
     return (
         <footer
-            className="flex flex-col items-center text-center text-white bg-gray-800 absolute bottom-0 left-0 w-full">
+            className="flex flex-col items-center text-center text-white bg-sky-600 absolute bottom-0 left-0 w-full">
             <div className="container pt-6 ">
                 <div className="">
                     <p className="flex items-center justify-center">

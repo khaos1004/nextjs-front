@@ -83,7 +83,7 @@ export default function Aside({ setHeaderData, setTabData }: AsideProps) {
                             <li key={index} className="flex w-full justify-between text-white-100 cursor-pointer items-center mb-6">
                                 <button key={index} className="flex items-center focus:outline-none focus:ring-2 focus:ring-white w-[12rem] flex-1">
                                     <value.svg />
-                                    <span key={index} onClick={() => handleButtonClick(value.name, value.url, value.index)} className={`text-sm ml-2 ${activeTab == value.name ? "font-bold" : "opacity-40"}`}>{value.name}</span>
+                                    <span key={index} onClick={() => handleButtonClick(value.name, value.url, value.index)} className={`text-sm ml-2 ${activeTab == value.name ? "font-bold" : "opacity-50"}`}>{value.name}</span>
                                 </button>
                                 <button className="animate-pulse rounded-full py-1 px-2 bg-white text-white-400 flex items-center justify-center text-xs"><Bell />5</button>
                             </li>

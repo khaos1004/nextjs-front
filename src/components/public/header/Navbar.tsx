@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from "react";
 import Link from "next/link";
 
@@ -14,12 +15,12 @@ interface HeaderProps {
 }
 
 const groupware: items[] = [
-    { id: 1, label: 'groupware 관리', url: '/groupware/management' },
-    { id: 2, label: 'groupware 정보', url: '/groupware/info' },
-    { id: 3, label: '서비스 소개', url: '/groupware/serviceintro' },
-    { id: 4, label: '서비스 요금', url: '/groupware/bill' },
-    { id: 5, label: '자료실', url: '/groupware/referencelibrary' },
-    { id: 6, label: '무료체험', url: '/groupware/free' },
+    { id: 1, label: 'Home', url: '/groupware/management' },
+    { id: 2, label: '구매정보', url: '/groupware/info' },
+    { id: 3, label: '영업정보', url: '/groupware/serviceintro' },
+    { id: 4, label: '기본정보', url: '/groupware/bill' },
+    { id: 5, label: '시스템관리', url: '/groupware/referencelibrary' },
+    { id: 6, label: '회계정보', url: '/groupware/free' },
 ];
 
 const erp: items[] = [
@@ -54,7 +55,7 @@ function Navbar({ setHeaderData }: HeaderProps) {
     };
 
     return (
-        <nav className="bg-gray-800 pt-5 pb-5 left-0">
+        <nav className="bg-sky-600 pt-5 pb-6 left-0">
             <div className="container">
                 <div className="flex">
                     <div className="flex w-[30%] pl-5">
@@ -67,7 +68,7 @@ function Navbar({ setHeaderData }: HeaderProps) {
                     </div>
                     <div className="flex w-[70%] space-x-12 justify-around ">
                         {currentMenu.map((item, index) => (
-                            <Link key={index} href={item.url}>
+                            <Link key={index} href={''}>
                                 <button key={index} className="text-white w-auto hover:cursor-pointer hover:animate-pulse">{item.label}</button>
                             </Link>
                         ))}

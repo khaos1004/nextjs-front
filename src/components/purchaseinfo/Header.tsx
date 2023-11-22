@@ -25,22 +25,22 @@ const IndexPage = () => {
         <div className="grid w-full">
 
           <div className="items-center col-start-1 col-span-3">
-            <label className="mr-2">&gt;요청부서:</label>
-            <input value="2110" type="email" name="email" id="email" className="border-solid border-2 border-gray-600 mr-2 w-16" />
-            <input type="email" name="email" id="email" className="border-solid border-2 border-gray-600 w-[12rem]" />
-            <button className="ml-2">검색</button>
+            <label className="mr-2">요청부서</label>
+            <input value="2110" type="" name="" id="" className="border-solid border-2 text-center mr-2 border-gray-600 w-[3rem] rounded" />
+            <input type="" name="" id="" className="border-solid border-2 border-gray-600 w-[12rem] rounded" />
+            <button className="ml-2 rounded-lg bg-gray-600 hover:bg-gray-800 text-white px-2 py-[0.25rem]">검색</button>
           </div>
 
           <div className="items-center col-start-7 col-span-2">
             <label className="mr-2">요청번호</label>
-            <input type="date" name="date" className="border-solid border-2 border-gray-600" />
+            <input type="date" name="date" className="border-solid border-2 border-gray-600 rounded-lg pl-2" />
           </div>
 
           <div className="items-center col-span-2">
-            <label className="mr-2">&gt;요청일자:</label>
-            <input type="date" name="date" className="border-solid border-2 border-gray-600" />
+            <label className="mr-2">요청일자</label>
+            <input type="date" name="date" className="border-solid border-2 border-gray-600 rounded-lg pl-2" />
           </div>
-          <button className="col-end-12 left-0">검색</button>
+          <button className="col-end-12 left-0 bg-gray-600 hover:bg-gray-800 rounded-lg text-white outline outline-offset-2 outline-1">검색</button>
         </div>
       </div>
     </>

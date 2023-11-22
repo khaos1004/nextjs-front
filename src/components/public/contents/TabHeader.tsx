@@ -37,8 +37,8 @@ const TabHeaderComponent = ({ tabHeader, tabIndex, activeTab, setActiveTab, remo
                     className={
                         "text-xs font-bold bolder-solid uppercase px-4 mt-2 shadow rounded block items-center justify-center w-[10rem] flex-1" +
                         (activeTab === Number(tabIndex)
-                            ? "text-white bg-white"
-                            : "text-blueGray-600 bg-gray-200")
+                            ? "bg-white"
+                            : "text-sky-600 bg-gray-200")
                     }
                     onClick={e => {
                         changeIndex(tabIndex)
