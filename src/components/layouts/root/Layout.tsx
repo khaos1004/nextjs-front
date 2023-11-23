@@ -1,10 +1,12 @@
 "use client"
 
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 import Header from '@/components/public/header/Navbar';
 import Aside from '@/components/public/side/Sidebar';
 import Footer from '@/components/public/footer/Footer';
 import TabLayoutComponent from '../tab/TabLayout';
+import { useRouter } from 'next/router';
+
 
 
 interface TabData {
@@ -15,6 +17,8 @@ interface TabData {
 
 
 export default function RootLayout() {
+
+    // const router = useRouter();
     const [headerData, setHeaderData] = useState<string>('groupWare'); // 메뉴를 위한 상태    
     const [activeTab, setActiveTab] = useState<number>(0);
     const [tabs, setTabs] = useState<TabData[]>([]);
@@ -31,6 +35,19 @@ export default function RootLayout() {
     const removeTab = (tabIndexToRemove: string) => {
         setTabs(prevTabs => prevTabs.filter(tab => tab.tabIndex !== tabIndexToRemove));
     };
+
+    // 세션 체크
+    // useEffect(() => {
+    //     const checkSession = async () => {
+    //         const response = await fetch('/api/checkSession', { credentials: 'include' });
+    //         if (!response.ok) {
+    //             // 세션 확인 실패 - 로그인 페이지로 리다이렉트
+    //             router.push('/login');
+    //         }
+    //     };
+
+    //     checkSession();
+    // }, [router]);
 
     return (
         <div className="flex h-screen">
